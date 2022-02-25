@@ -11,10 +11,12 @@ import SwiftUI
 struct ContentView: View {
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var needlogin: Bool = true
     
     var body: some View {
+        
+        if needlogin {
         VStack {
-            //NavigationView{
                 Spacer()
                 Image("logo")
                     .resizable()
@@ -51,7 +53,9 @@ struct ContentView: View {
                 .padding(.bottom, 30)
                 
                 Button(
-                    action: { }, label: {Text("Log In")}
+                    action: {
+                        needlogin = false
+                    }, label: {Text("Log In")}
                 )
                     .foregroundColor(Color.white)
                     .frame(width: 310)
@@ -65,8 +69,12 @@ struct ContentView: View {
                 Spacer()
             }
             .textFieldStyle(.roundedBorder)
-        //}
+        }
+
+    else {
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
+}
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -74,3 +82,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
